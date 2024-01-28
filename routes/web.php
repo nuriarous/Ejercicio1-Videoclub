@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,22 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-Route::get('/login', function () {
-    return view('auth.login');
-});
-Route::get('/catalog', function () {
-    return view('Catalog.index');
-});
-Route::get('/catalog/show/{id}', function () {
-    return view('catalog.show', array('id'=>$id));
+use App\Http\Controllers\catalogController;
+use App\Http\Controllers\homeController;
 
-});
-Route::get('/catalog/create', function () {
-    return view('Catalog.create');
-});
-Route::get('/catalog/edit/{id}', function () {
-    return view('Catalog.edit');
-});
+Route::get('/', [catalogController::class, 'getIndex']);
+Route::get('/catalog', [catalogController::class, 'getIndex']);
+Route::get('/catalog/show/{id}', [catalogController::class, 'getShow']);
+Route::get('/catalog/create', [catalogController::class, 'getCreate']);
+Route::get('/catalog/edit', [catalogController::class, 'getEdit']);
