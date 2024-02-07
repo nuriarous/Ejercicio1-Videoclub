@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Pelicula;
+use \App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,6 +15,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void{
         self::seedCatalog();
         $this->command->info("tabla iniciada con exito");
+        self::seedUsers();
+
 
 
     }
@@ -31,4 +34,14 @@ class DatabaseSeeder extends Seeder
             $p->save();
         }
     }
+
+    public function seedUsers()
+{
+    $usuario = new User;
+        $usuario->name = 'Lola';
+        $usuario->email = 'lola@example.com';
+        $usuario->password = '123456';
+        $usuario->save();
+
+}
 }
