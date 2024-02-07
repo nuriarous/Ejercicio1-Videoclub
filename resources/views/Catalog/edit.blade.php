@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('content')
-<form>
+<form >
     <div class="mb-3 col-8">
       <label for="exampleInputEmail1" class="form-label">Título: </label>
       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
