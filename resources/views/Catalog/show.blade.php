@@ -21,7 +21,7 @@
             </p>
             <p>
                 <button type="button" class="btn btn-danger">Devolver Película</button>
-                <a href="{{ url('/catalog/edit') }}"><button type="button" class="btn btn-warning">Editar Película</button>
+                <a href="{{route('catalog.edit', $arrayPeliculas)}}"><button type="button" class="btn btn-warning">Editar Película</button>
                 <a href="{{ url('/catalog') }}"><button type="button" class="btn btn-light"> < Volver al listado</button>
             
            

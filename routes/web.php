@@ -15,20 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [catalogController::class, 'getIndex']);
-
-
-
-require __DIR__.'/auth.php';
-
-
+require __DIR__ . '/auth.php';
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/', [catalogController::class, 'getIndex']);
     Route::get('/catalog', [catalogController::class, 'getIndex']);
-    Route::get('/catalog/show/{id}', [catalogController::class, 'getShow']);
-    Route::get('/catalog/create', [catalogController::class, 'getCreate']);
-    Route::post('/catalog/create', [catalogController::class, 'postCreate']); 
+    Route::get('/catalog/show/{id}', [catalogController::class, 'getShow'])->name('catalog.show');
+    Route::get('/catalog/create', [catalogController::class, 'getCreate'])->name('catalog.create');
+    Route::post('catalog', [catalogController::class, 'store'])->name('catalog.store');
 
-    Route::get('/catalog/edit', [catalogController::class, 'getEdit']);
-    Route::put('/catalog/edit/{id}', [catalogController::class, 'putEdit']);
+    Route::get('/catalog/{id}/edit', [catalogController::class, 'edit'])->name('catalog.edit');
+    Route::put('/catalog/edit', [catalogController::class, 'update'])->name('catalog.update');
 });
